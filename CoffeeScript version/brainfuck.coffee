@@ -10,59 +10,58 @@
 ###
 
 class Brainfuck
-	translate: (stream, extent = 5) ->
-		return {
-			init: (current, mint, i) ->
-				stack = []
-				diff = 90 / extent | 0
+	translate: (stream, extent = 5) -> {
+		init: (current, mint, i) ->
+			stack = []
+			diff = 90 / extent | 0
 
-				while i < extent
-					stack.push diff * ++i
+			while i < extent
+				stack.push diff * ++i
 
-				result = [@build extent, diff]; i = 0
+			result = [@build extent, diff]; i = 0
 
-				while stream[i]
-					char = stream.charCodeAt i++
-					mint = @closest char, stack, current
+			while stream[i]
+				char = stream.charCodeAt i++
+				mint = @closest char, stack, current
 
-					result.push(
-						@compare(mint - current, '>', '<'),
-						@compare(char - stack[mint], '+', '-'), '.'
-					)
+				result.push(
+					@compare(mint - current, '>', '<'),
+					@compare(char - stack[mint], '+', '-'), '.'
+				)
 
-					current = mint
-					stack[mint] = char
+				current = mint
+				stack[mint] = char
 
-				result.join ''
+			result.join ''
 
-			repeat: (char, i) ->
-				Array(++i).join char
+		repeat: (char, i) ->
+			Array(++i).join char
 
-			compare: (diff, positive, negative) ->
-				array = [[diff, positive], [-diff, negative]][if diff > 0 then 0 else 1]
-				@repeat array[1], array[0]
+		compare: (diff, positive, negative) ->
+			array = [[diff, positive], [-diff, negative]][if diff > 0 then 0 else 1]
+			@repeat array[1], array[0]
 
-			build: (count, diff) ->
-				array = [@repeat('+', diff), '[']; i = 0
+		build: (count, diff) ->
+			array = [@repeat('+', diff), '[']; i = 0
 
-				while ++i < count
-					array.push '>' + @repeat '+', i + 1
+			while ++i < count
+				array.push '>' + @repeat '+', i + 1
 
-				array.push @repeat('<', count - 1), '-]', @repeat('+', diff)
-				array.join ''
+			array.push @repeat('<', count - 1), '-]', @repeat('+', diff)
+			array.join ''
 
-			closest: (char, stack, current) ->
-				residual = (stack) ->
-					Math.abs char - stack
+		closest: (char, stack, current) ->
+			residual = (stack) ->
+				Math.abs char - stack
 
-				min = 0; i = 0
+			min = 0; i = 0
 
-				while stack[++i]
-					min = i if residual stack[i] < residual stack[min]
+			while stack[++i]
+				min = i if residual stack[i] < residual stack[min]
 
-				if residual(stack[min]) > residual(stack[current]) then current else min
+			if residual(stack[min]) > residual(stack[current]) then current else min
 
-		}.init 0, 0, 0
+	}.init 0, 0, 0
 
 	###
 	- Brainfuck.interpret(input, [, value])
