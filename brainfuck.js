@@ -9,9 +9,7 @@
  * @date: 4/25/12 12:40 PM
 **/
 
-var Brainfuck = function() {
-
-};
+var Brainfuck = function() {};
 
 Brainfuck.prototype = {
 	/**
@@ -23,7 +21,7 @@ Brainfuck.prototype = {
 	*/
 	translate: function(stream, extent) {
 		return {
-			init: function (stream, extent, current, mint, i) {
+			init: function (current, mint, i) {
 				extent = extent || 5;
 
 				var stack = [],
@@ -83,7 +81,7 @@ Brainfuck.prototype = {
 
 				return residual(stack[min]) > residual(stack[current]) ? current : min;
 			}
-		}.init(stream, extent, 0, 0, 0);
+		}.init(0, 0, 0);
 	},
 
 	/**
@@ -145,3 +143,8 @@ Brainfuck.prototype = {
 		}([], [], 30000, 0, 0, 0, -1);
 	}
 };
+
+Brainfuck = new Brainfuck()
+
+text = 'foo';
+console.log(Brainfuck.translate(text, 5))
