@@ -143,8 +143,3 @@ Brainfuck.prototype = {
 		}([], [], 30000, 0, 0, 0, -1);
 	}
 };
-
-Brainfuck = new Brainfuck()
-
-text = 'foo';
-console.log(Brainfuck.translate(text, 5))
