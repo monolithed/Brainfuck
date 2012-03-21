@@ -51,7 +51,7 @@ Brainfuck.prototype = {
 				return result.join('');
 			},
 
-			repeat: repeat = function (char, i) {
+			repeat: function (char, i) {
 				return Array(++i).join(char);
 			},
 
