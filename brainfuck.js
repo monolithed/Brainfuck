@@ -24,8 +24,7 @@ Brainfuck.prototype = {
 	translate: function(stream, extent) {
 		return {
 			init: function (stream, extent, current, mint, i) {
-				if (extent <= 0)
-					throw new RangeError('The byte is not within the correct range allowed!');
+				extent = extent || 5;
 
 				var stack = [],
 					diff = 90 / extent | 0;
@@ -146,11 +145,3 @@ Brainfuck.prototype = {
 		}([], [], 30000, 0, 0, 0, -1);
 	}
 };
-
-/*
-var Brainfuck = new Brainfuck();
-
-var text = 'foo';
-console.log(Brainfuck.translate(text, 5));
-console.log(Brainfuck.interpret(Brainfuck.translate(text, 5)));
-*/
