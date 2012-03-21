@@ -9,9 +9,7 @@ Translator and interpreter for Brainfuck programming language
 
 ```javascript
 var Brainfuck = new Brainfuck();
-
-var text = 'foo';
-console.log(Brainfuck.translate(text, 5));
+console.log(Brainfuck.translate('Hello World', 5));
 
 //++++++++++++++++++[>++>+++>++++>+++++<<<<-]++++++++++++++++++>>>.>+++++++++++.+++++++..+++.<<<----.>>+++++++++++++++.>.+++.------.--------.<<<+.
 ```
