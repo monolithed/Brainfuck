@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC
+		"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Translator and interpreter for Brainfuck programming language</title>
+	<script src="../brainfuck.js" type="text/javascript"></script>
+	<script src="./script.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<h1>Translator and interpreter for Brainfuck programming language</h1>
+
+<div>
+	<textarea name="" id="input">Hello World!</textarea>
+	<input type="text" id="extent" value="5" />
+	<input type="button" id="translate" value="translate" />
+	<input type="button" id="interpret" value="interpret" />
+	<p>Result:</p>
+	<textarea name="" id="output">++++++++++++++++++[>++>+++>++++>+++++<<<<-]++++++++++++++++++>>>.>+++++++++++.+++++++..+++.<<<----.>>+++++++++++++++.>.+++.------.--------.<<<+.</textarea>
+
+	<pre>
+    //Translate:
+    var Brainfuck = new Brainfuck();
+    var translate = Brainfuck.translate("Hello World!", 5);
+
+    console.log(translate);
+
+    //Interpret:
+    var interpret = Brainfuck.interpret(translate);
+    console.log(interpret);
+	</pre>
+</div>
+</body>
+</html>
