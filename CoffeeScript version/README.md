@@ -9,9 +9,9 @@ Translator and interpreter for Brainfuck programming language
 
 ```coffeescript
 brainfuck = new Brainfuck
-console.log brainfuck.translate 'Hello World!', 5
+console.log brainfuck.translate 'Hello World', 5
 
-//++++++++++++++++++[>++>+++>++++>+++++<<<<-]++++++++++++++++++>>>.>+++++++++++.+++++++..+++.<<<----.>>+++++++++++++++.>.+++.------.--------.<<<+.
+#++++++++++++++++++[>++>+++>++++>+++++<<<<-]++++++++++++++++++>>>.>+++++++++++.+++++++..+++.<<<----.>>+++++++++++++++.>.+++.------.--------.<<<+.
 ```
 
 * <b>Interpreter</b>:
@@ -20,7 +20,7 @@ console.log brainfuck.translate 'Hello World!', 5
 brainfuck = new Brainfuck
 interpret = brainfuck.interpret '++++++++++++++++++[>++>+++>++++>+++++<<<<-]++++++++++++++++++>>>.>+++++++++++.+++++++..+++.<<<----.>>+++++++++++++++.>.+++.------.--------.<<<+.'
 
-console.log interpret //Hello World!
+console.log interpret #Hello World
 ```
 
 ##License
