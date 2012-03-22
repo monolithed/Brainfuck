@@ -18,7 +18,7 @@ class Brainfuck
 			while i < extent
 				stack.push diff * ++i
 
-			result = [@build extent, diff]; i = 0
+			result = [@build diff]; i = 0
 
 			while stream[i]
 				char = stream.charCodeAt i++
@@ -41,13 +41,13 @@ class Brainfuck
 			array = [[diff, positive], [-diff, negative]][if diff > 0 then 0 else 1]
 			@repeat array[1], array[0]
 
-		build: (count, diff) ->
+		build: (diff) ->
 			array = [@repeat('+', diff), '[']; i = 0
 
-			while ++i < count
+			while ++i < extent
 				array.push '>' + @repeat '+', i + 1
 
-			array.push @repeat('<', count - 1), '-]', @repeat('+', diff)
+			array.push @repeat('<', extent - 1), '-]', @repeat('+', diff)
 			array.join ''
 
 		closest: (char, stack, current) ->
@@ -57,7 +57,7 @@ class Brainfuck
 			min = 0; i = 0
 
 			while stack[++i]
-				min = i if residual stack[i] < residual stack[min]
+				min = i if residual(stack[i]) < residual(stack[min])
 
 			if residual(stack[min]) > residual(stack[current]) then current else min
 
