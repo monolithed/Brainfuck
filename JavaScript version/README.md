@@ -20,7 +20,7 @@ console.log(Brainfuck.translate('Hello World', 5));
 var Brainfuck = new Brainfuck();
 var interpret = Brainfuck.interpret('++++++++++++++++++[>++>+++>++++>+++++<<<<-]++++++++++++++++++>>>.>+++++++++++.+++++++..+++.<<<----.>>+++++++++++++++.>.+++.------.--------.<<<+.');
 
-console.log(interpret); //Hello World!
+console.log(interpret); //Hello World
 ```
 
 ##License
