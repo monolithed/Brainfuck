@@ -30,7 +30,7 @@ Brainfuck.prototype = {
 				while (i < extent)
 					stack.push(diff * ++i);
 
-				var result = [this.build(extent, diff)], char;
+				var result = [this.build(diff)], char;
 				i = 0;
 
 				while (stream[i]) {
@@ -58,13 +58,13 @@ Brainfuck.prototype = {
 				return this.repeat(array[1], array[0]);
 			},
 
-			build: function (count, diff) {
+			build: function (diff) {
 				var array = [this.repeat('+', diff), '['], i = 0;
 
-				while (++i < count)
+				while (++i < extent)
 					array.push('>' + this.repeat('+', i + 1));
 
-				array.push(this.repeat('<', count - 1), '-]', this.repeat('+', diff));
+				array.push(this.repeat('<', extent - 1), '-]', this.repeat('+', diff));
 
 				return array.join('');
 			},
